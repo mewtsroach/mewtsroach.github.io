@@ -1,1 +1,736 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elena - Robotics Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #12182b;
+            --bg-card: #1a2237;
+            --text-primary: #e8edf4;
+            --text-secondary: #9aa5b8;
+            --accent-cyan: #00d9ff;
+            --accent-orange: #ff6b35;
+            --border: #2a3a52;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background grid */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            z-index: -1;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-cyan);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+            animation: fadeIn 1s ease-out;
+            animation-fill-mode: both;
+        }
+
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+        section:nth-child(4) { animation-delay: 0.6s; }
+        section:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::before {
+            content: '//';
+            color: var(--accent-cyan);
+            margin-right: 0.5rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.1);
+        }
+
+        .stat-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Research Section */
+        .research-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .research-card:hover {
+            border-color: var(--accent-orange);
+            transform: translateX(10px);
+        }
+
+        .research-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+            color: var(--accent-orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .research-venue {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .research-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .research-metrics {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .metric {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        .metric-value {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-orange));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.15);
+        }
+
+        .project-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-course {
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .skill-category h3 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .contact-info {
+            color: var(--text-secondary);
+            line-height: 2;
+        }
+
+        .contact-link {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-orange);
+        }
+
+        .contact-cta {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .contact-cta h3 {
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .contact-cta p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-orange));
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <h1>Elena</h1>
+                    <p class="tagline">Robotics Engineer | CMU SCS '26</p>
+                </div>
+                <nav>
+                    <a href="#about">About</a>
+                    <a href="#research">Research</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <div class="container">
+                <h2>About</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>I'm a junior at Carnegie Mellon University studying Robotics in the School of Computer Science, passionate about building intelligent systems that interact with the physical world.</p>
+                        <p>Currently conducting research at Kantor Lab on autonomous plant sampling systems, where I'm developing computer vision and motion planning algorithms for agricultural robotics. As a Teaching Assistant for Robot Building Practices, I mentor students in CAD design, machining, and system integration.</p>
+                        <p>I'm actively seeking summer 2026 robotics software engineering internships where I can apply my skills in perception, planning, and control to real-world robotic systems.</p>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-card">
+                            <div class="stat-number">3.57</div>
+                            <div class="stat-label">GPA in Robotics</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">30+</div>
+                            <div class="stat-label">Students Mentored</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">97%</div>
+                            <div class="stat-label">Detection Accuracy</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">80%</div>
+                            <div class="stat-label">Grasp Success Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="research">
+            <div class="container">
+                <h2>Research</h2>
+                <div class="research-card">
+                    <div class="research-title">Autonomous Plant Sampling System</div>
+                    <div class="research-venue">Kantor Lab • Primary Author • IROS 2026 Submission</div>
+                    <div class="research-description">
+                        Developing an end-to-end autonomous system for plant leaf sampling using computer vision and motion planning. Integrated RAFT stereo depth estimation and SAM segmentation for robust leaf detection in challenging agricultural environments. Implemented grasp planning and trajectory optimization for a robotic manipulator to achieve reliable sampling performance.
+                    </div>
+                    <div class="research-metrics">
+                        <div class="metric">
+                            <span class="metric-value">97%</span> leaf detection accuracy
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">80%</span> grasp success rate
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">ROS</span> • Python • C++
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-title">Light Painting Robot</div>
+                        <div class="project-course">16-384 Robot Kinematics & Dynamics</div>
+                        <div class="project-description">
+                            Implemented inverse kinematics and trajectory generation for a Franka Emika robot arm to create light paintings through long-exposure photography. Generated the Disney Channel Mickey Mouse logo with precise motion control.
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Inverse Kinematics</span>
+                            <span class="tech-tag">Trajectory Planning</span>
+                            <span class="tech-tag">Franka Emika</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-title">F1TENTH Autonomous Racing</div>
+                        <div class="project-course">16-782 Planning & Decision-Making</div>
+                        <div class="project-description">
+                            Developing autonomous racing algorithms including Automatic Emergency Braking with Time to Collision calculations and multi-beam safety thresholds. Implementing path planning and control for high-speed navigation.
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">ROS</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Motion Planning</span>
+                            <span class="tech-tag">Control Theory</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-title">Visual Servo Control</div>
+                        <div class="project-course">16-662 Robot Autonomy</div>
+                        <div class="project-description">
+                            Implemented Position-Based and Image-Based Visual Servoing in Docker-based drone simulation environments. Developed control algorithms for visual tracking and autonomous navigation.
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">Control Systems</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-title">Motion Planning Algorithms</div>
+                        <div class="project-course">16-782 Planning & Decision-Making</div>
+                        <div class="project-description">
+                            Implemented A*, RRT*, and CHOMP algorithms in MATLAB. Developed ensemble planning strategies achieving 100% success rates on test datasets through intelligent algorithm selection.
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">MATLAB</span>
+                            <span class="tech-tag">Path Planning</span>
+                            <span class="tech-tag">Optimization</span>
+                            <span class="tech-tag">Algorithms</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-title">Autonomous Dodecacopter</div>
+                        <div class="project-course">Tartan Air Rescue • NASA/Boeing GoAERO Challenge</div>
+                        <div class="project-description">
+                            Led software development for a 140-pound autonomous dodecacopter. Developed flight control, navigation, and mission planning systems for search and rescue operations.
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Embedded Systems</span>
+                            <span class="tech-tag">Flight Control</span>
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">Autonomy</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-title">Deep Reinforcement Learning</div>
+                        <div class="project-course">10-315 Machine Learning</div>
+                        <div class="project-description">
+                            Implemented Advantage Actor-Critic (A2C) algorithm for Atari Pong. Developed neural network architectures and training pipelines for deep RL applications.
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">Reinforcement Learning</span>
+                            <span class="tech-tag">Neural Networks</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Languages</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">C++</span>
+                            <span class="skill-item">MATLAB</span>
+                            <span class="skill-item">JavaScript</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Robotics</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">ROS</span>
+                            <span class="skill-item">Motion Planning</span>
+                            <span class="skill-item">Computer Vision</span>
+                            <span class="skill-item">Control Systems</span>
+                            <span class="skill-item">Kinematics</span>
+                            <span class="skill-item">SLAM</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Machine Learning</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">PyTorch</span>
+                            <span class="skill-item">Deep Learning</span>
+                            <span class="skill-item">Reinforcement Learning</span>
+                            <span class="skill-item">Computer Vision</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Tools & Design</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">CAD (SolidWorks)</span>
+                            <span class="skill-item">Git</span>
+                            <span class="skill-item">Docker</span>
+                            <span class="skill-item">Linux</span>
+                            <span class="skill-item">Machining</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Contact</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <p><strong>Email:</strong> <a href="mailto:your.email@example.com" class="contact-link">your.email@example.com</a></p>
+                        <p><strong>GitHub:</strong> <a href="https://github.com/yourusername" class="contact-link">github.com/yourusername</a></p>
+                        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" class="contact-link">linkedin.com/in/yourprofile</a></p>
+                        <p><strong>Location:</strong> Pittsburgh, PA</p>
+                    </div>
+                    <div class="contact-cta">
+                        <h3>Let's Build Something</h3>
+                        <p>I'm actively seeking summer 2026 robotics software engineering internships. Interested in perception, planning, control, and making robots work in the real world.</p>
+                        <a href="mailto:your.email@example.com" class="btn">Get in Touch</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Elena. Built with precision.</p>
+        </div>
+    </footer>
+</body>
+</html>
