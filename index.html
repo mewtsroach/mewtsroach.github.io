@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elena - Robotics Engineer</title>
+    <title>Elena Behzadi - Robotics Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -110,6 +110,7 @@
         nav {
             display: flex;
             gap: 2rem;
+            align-items: center;
         }
 
         nav a {
@@ -140,6 +141,27 @@
             width: 100%;
         }
 
+        .resume-btn {
+            font-family: 'JetBrains Mono', monospace;
+            padding: 0.5rem 1.2rem;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-orange));
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .resume-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 217, 255, 0.3);
+        }
+
+        .resume-btn::after {
+            display: none;
+        }
+
         /* Sections */
         section {
             padding: 4rem 0;
@@ -151,6 +173,7 @@
         section:nth-child(3) { animation-delay: 0.4s; }
         section:nth-child(4) { animation-delay: 0.6s; }
         section:nth-child(5) { animation-delay: 0.8s; }
+        section:nth-child(6) { animation-delay: 1s; }
 
         @keyframes fadeIn {
             from {
@@ -181,7 +204,7 @@
         /* About Section */
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 2fr 1fr;
             gap: 3rem;
             align-items: start;
         }
@@ -195,57 +218,100 @@
             margin-bottom: 1rem;
         }
 
-        .stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .stat-card {
-            background: var(--bg-card);
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            border-color: var(--accent-cyan);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.1);
-        }
-
-        .stat-number {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-        }
-
-        /* Research Section */
-        .research-card {
+        .quick-stats {
             background: var(--bg-card);
             padding: 2rem;
             border: 1px solid var(--border);
             border-radius: 8px;
-            margin-bottom: 2rem;
+        }
+
+        .quick-stats h3 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        /* Research Section */
+        .research-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .research-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background: var(--bg-card);
+            padding: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
             transition: all 0.3s ease;
         }
 
         .research-card:hover {
             border-color: var(--accent-orange);
-            transform: translateX(10px);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(255, 107, 53, 0.15);
+        }
+
+        .research-media {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--bg-secondary);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .research-media img,
+        .research-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .media-placeholder {
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .research-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .research-title {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--accent-orange);
             margin-bottom: 0.5rem;
         }
@@ -258,7 +324,8 @@
 
         .research-description {
             color: var(--text-secondary);
-            line-height: 1.7;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
         }
 
         .research-metrics {
@@ -278,7 +345,126 @@
             font-weight: 600;
         }
 
-        /* Projects Section */
+        /* Featured Projects - Hero Style */
+        .featured-projects {
+            display: grid;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .featured-project {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .featured-project:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 217, 255, 0.15);
+        }
+
+        .featured-project:nth-child(even) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .featured-project:nth-child(even) .project-media {
+            order: 2;
+        }
+
+        .featured-project:nth-child(even) .project-info {
+            order: 1;
+        }
+
+        .project-media {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--bg-secondary);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-media img,
+        .project-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .featured-course {
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+        }
+
+        .featured-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            padding: 0.4rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 217, 255, 0.1);
+        }
+
+        .featured-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+
+        /* Other Projects Grid */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -289,32 +475,45 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 2rem;
+            overflow: hidden;
             transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-orange));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
         }
 
         .project-card:hover {
+            border-color: var(--accent-orange);
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.15);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.15);
+        }
+
+        .project-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-thumbnail img,
+        .project-thumbnail video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-placeholder {
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
         }
 
         .project-title {
@@ -334,23 +533,52 @@
             color: var(--text-secondary);
             font-size: 0.95rem;
             line-height: 1.7;
+            margin-bottom: 1rem;
         }
 
         .project-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: 1rem;
         }
 
-        .tech-tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            padding: 0.3rem 0.8rem;
-            background: var(--bg-secondary);
+        /* Organizations Section */
+        .orgs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .org-card {
+            background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 4px;
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .org-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.1);
+        }
+
+        .org-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            color: var(--accent-orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .org-role {
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+        }
+
+        .org-description {
             color: var(--text-secondary);
+            line-height: 1.7;
         }
 
         /* Skills Section */
@@ -456,6 +684,19 @@
         }
 
         /* Responsive */
+        @media (max-width: 968px) {
+            .featured-project,
+            .featured-project:nth-child(even),
+            .research-card {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-project:nth-child(even) .project-media,
+            .featured-project:nth-child(even) .project-info {
+                order: 0;
+            }
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
@@ -469,14 +710,11 @@
             nav {
                 flex-direction: column;
                 gap: 1rem;
+                align-items: flex-start;
             }
 
             .about-content,
             .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats {
                 grid-template-columns: 1fr;
             }
 
@@ -496,15 +734,17 @@
         <div class="container">
             <div class="header-content">
                 <div>
-                    <h1>Elena</h1>
-                    <p class="tagline">Robotics Engineer | CMU SCS '26</p>
+                    <h1>Elena Behzadi</h1>
+                    <p class="tagline">Robotics Engineer | CMU SCS '27</p>
                 </div>
                 <nav>
                     <a href="#about">About</a>
                     <a href="#research">Research</a>
                     <a href="#projects">Projects</a>
+                    <a href="#organizations">Organizations</a>
                     <a href="#skills">Skills</a>
                     <a href="#contact">Contact</a>
+                    <a href="resume.pdf" class="resume-btn" download>Resume ↓</a>
                 </nav>
             </div>
         </div>
@@ -517,25 +757,22 @@
                 <div class="about-content">
                     <div class="about-text">
                         <p>I'm a junior at Carnegie Mellon University studying Robotics in the School of Computer Science, passionate about building intelligent systems that interact with the physical world.</p>
-                        <p>Currently conducting research at Kantor Lab on autonomous plant sampling systems, where I'm developing computer vision and motion planning algorithms for agricultural robotics. As a Teaching Assistant for Robot Building Practices, I mentor students in CAD design, machining, and system integration.</p>
-                        <p>I'm actively seeking summer 2026 robotics software engineering internships where I can apply my skills in perception, planning, and control to real-world robotic systems.</p>
+                        <p>Currently conducting research at Kantor Lab on autonomous plant sampling for disease detection, where I'm developing computer vision and motion planning algorithms for agricultural robotics. As a Teaching Assistant for Robot Building Practices, I mentor 30+ students in CAD design, machining, and system integration.</p>
+                        <p>I'm actively seeking summer 2026 robotics software and hardware engineering internships where I can apply my skills in perception, planning, control, and mechanical design to real-world robotic systems.</p>
                     </div>
-                    <div class="stats">
-                        <div class="stat-card">
-                            <div class="stat-number">3.57</div>
-                            <div class="stat-label">GPA in Robotics</div>
+                    <div class="quick-stats">
+                        <h3>Quick Stats</h3>
+                        <div class="stat-item">
+                            <div class="stat-label">GPA</div>
+                            <div class="stat-value">3.57</div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-number">30+</div>
+                        <div class="stat-item">
+                            <div class="stat-label">Current Focus</div>
+                            <div class="stat-value" style="font-size: 1rem;">Agricultural Robotics</div>
+                        </div>
+                        <div class="stat-item">
                             <div class="stat-label">Students Mentored</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">97%</div>
-                            <div class="stat-label">Detection Accuracy</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">80%</div>
-                            <div class="stat-label">Grasp Success Rate</div>
+                            <div class="stat-value">30+</div>
                         </div>
                     </div>
                 </div>
@@ -545,21 +782,37 @@
         <section id="research">
             <div class="container">
                 <h2>Research</h2>
-                <div class="research-card">
-                    <div class="research-title">Autonomous Plant Sampling System</div>
-                    <div class="research-venue">Kantor Lab • Primary Author • IROS 2026 Submission</div>
-                    <div class="research-description">
-                        Developing an end-to-end autonomous system for plant leaf sampling using computer vision and motion planning. Integrated RAFT stereo depth estimation and SAM segmentation for robust leaf detection in challenging agricultural environments. Implemented grasp planning and trajectory optimization for a robotic manipulator to achieve reliable sampling performance.
-                    </div>
-                    <div class="research-metrics">
-                        <div class="metric">
-                            <span class="metric-value">97%</span> leaf detection accuracy
+                <div class="research-grid">
+                    <div class="research-card">
+                        <div class="research-media">
+                            <!-- Add your plant sampling system video/image here -->
+                            <div class="media-placeholder">
+                                🌿 Add plant sampling system video/image!<br>
+                                (gantry in action, leaf detection, or grasping demo)
+                            </div>
+                            <!-- Example: Uncomment and add your file
+                            <video autoplay loop muted playsinline>
+                                <source src="media/plant-sampling.mp4" type="video/mp4">
+                            </video>
+                            -->
                         </div>
-                        <div class="metric">
-                            <span class="metric-value">80%</span> grasp success rate
-                        </div>
-                        <div class="metric">
-                            <span class="metric-value">ROS</span> • Python • C++
+                        <div class="research-info">
+                            <div class="research-title">Autonomous Plant Sampling System</div>
+                            <div class="research-venue">Kantor Lab • Primary Author • IROS 2026 Submission</div>
+                            <div class="research-description">
+                                Conducting independent research on autonomous plant sampling for disease detection. Developed SAM-based computer vision pipeline achieving 97% leaf detection accuracy in field conditions. Implemented TensorFlow grasp pose estimation integrated with MoveIt on 6-DoF gantry, achieving 80% grasp success rate.
+                            </div>
+                            <div class="research-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">97%</span> leaf detection
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">80%</span> grasp success
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">Tech:</span> ROS, TensorFlow, MoveIt
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -568,89 +821,268 @@
 
         <section id="projects">
             <div class="container">
-                <h2>Projects</h2>
+                <h2>Featured Projects</h2>
+                
+                <!-- Featured Projects with Large Media -->
+                <div class="featured-projects">
+                    <!-- Robotic Light Painting -->
+                    <div class="featured-project">
+                        <div class="project-media">
+                            <!-- Replace this placeholder with your Mickey Mouse video/gif -->
+                            <div class="media-placeholder">
+                                📹 Add your Mickey Mouse light painting video!<br>
+                                (drawing process or final result)
+                            </div>
+                            <!-- Example: Uncomment and add your file
+                            <video autoplay loop muted playsinline>
+                                <source src="media/light-painting-mickey.mp4" type="video/mp4">
+                            </video>
+                            -->
+                        </div>
+                        <div class="project-info">
+                            <div class="featured-title">Robotic Light Painting System</div>
+                            <div class="featured-course">16-384 Robot Kinematics & Dynamics Capstone • Fall 2025</div>
+                            <div class="featured-description">
+                                Implemented light painting with Franka Panda using inverse kinematics and trapezoidal velocity profiles. Designed pick-and-place sequences for three flashlights with collision avoidance and reorientation logic, creating the Disney Channel Mickey Mouse logo through long-exposure photography.
+                            </div>
+                            <div class="project-links">
+                                <a href="https://youtube.com/your-video" class="project-link">📹 YouTube</a>
+                                <!-- Add more links as needed -->
+                            </div>
+                            <div class="featured-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Inverse Kinematics</span>
+                                <span class="tech-tag">Trajectory Generation</span>
+                                <span class="tech-tag">Franka Emika</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 140lb Autonomous Dodecacopter -->
+                    <div class="featured-project">
+                        <div class="project-media">
+                            <div class="media-placeholder">
+                                🚁 Add drone photos/videos!<br>
+                                (assembly, flight testing, or the drone itself)
+                            </div>
+                            <!-- Example:
+                            <img src="media/drone-flight.jpg" alt="140lb Autonomous Dodecacopter">
+                            -->
+                        </div>
+                        <div class="project-info">
+                            <div class="featured-title">140lb Autonomous Dodecacopter</div>
+                            <div class="featured-course">Large Air Vehicle Development Course • Fall 2025</div>
+                            <div class="featured-description">
+                                Led software team for CMU's largest drone (140lbs, 600lbs thrust) designed for human transport. Built autonomy foundation in Isaac Sim with AirStack for sim-to-real transfer and safety systems. Tuned dual-GPS ArduPilot PID control and contributed to carbon fiber assembly, soldering, and flight testing.
+                            </div>
+                            <div class="featured-tech">
+                                <span class="tech-tag">ROS2</span>
+                                <span class="tech-tag">Isaac Sim</span>
+                                <span class="tech-tag">ArduPilot</span>
+                                <span class="tech-tag">PID Control</span>
+                                <span class="tech-tag">Sim-to-Real</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Autonomous Cornhole Robot - CAD/Hardware -->
+                    <div class="featured-project">
+                        <div class="project-media">
+                            <div class="media-placeholder">
+                                🎯 Add cornhole robot video/image!<br>
+                                (robot throwing, CAD design, or competition)
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="featured-title">Autonomous Cornhole Robot 🏆</div>
+                            <div class="featured-course">1st Place Winner • Course Competition</div>
+                            <div class="featured-description">
+                                Won 1st place among 30+ teams by designing mobile robot with custom extendable throwing mechanism. Implemented computer vision targeting system with real-time trajectory calculation and PID-controlled launcher. Engineered complete mechanical design including custom power distribution and precision linkages.
+                            </div>
+                            <div class="featured-tech">
+                                <span class="tech-tag">CAD (SolidWorks)</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Computer Vision</span>
+                                <span class="tech-tag">PID Control</span>
+                                <span class="tech-tag">Mechanical Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Projects Grid -->
+                <h2 style="margin-top: 3rem;">More Projects</h2>
                 <div class="projects-grid">
+                    <!-- SLAM and Object Detection -->
                     <div class="project-card">
-                        <div class="project-title">Light Painting Robot</div>
-                        <div class="project-course">16-384 Robot Kinematics & Dynamics</div>
-                        <div class="project-description">
-                            Implemented inverse kinematics and trajectory generation for a Franka Emika robot arm to create light paintings through long-exposure photography. Generated the Disney Channel Mickey Mouse logo with precise motion control.
+                        <div class="project-thumbnail">
+                            <div class="thumbnail-placeholder">
+                                🗺️ Add SLAM map or TurtleBot3
+                            </div>
+                            <!-- Example: <img src="media/slam-map.jpg" alt="SLAM"> -->
                         </div>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Inverse Kinematics</span>
-                            <span class="tech-tag">Trajectory Planning</span>
-                            <span class="tech-tag">Franka Emika</span>
+                        <div class="project-content">
+                            <div class="project-title">SLAM and Object Detection System</div>
+                            <div class="project-course">16-280 Intelligent Robot Systems • Spring 2025</div>
+                            <div class="project-description">
+                                Implemented SLAM and ICP algorithms on TurtleBot3 for autonomous navigation and mapping. Trained custom Roboflow object detection model, integrated with camera module for real-time recognition.
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">ROS</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">ICP</span>
+                                <span class="tech-tag">Roboflow</span>
+                                <span class="tech-tag">TurtleBot3</span>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- Two-Wheeled Balancing Robot -->
                     <div class="project-card">
-                        <div class="project-title">F1TENTH Autonomous Racing</div>
-                        <div class="project-course">16-782 Planning & Decision-Making</div>
-                        <div class="project-description">
-                            Developing autonomous racing algorithms including Automatic Emergency Braking with Time to Collision calculations and multi-beam safety thresholds. Implementing path planning and control for high-speed navigation.
+                        <div class="project-thumbnail">
+                            <div class="thumbnail-placeholder">
+                                🤖 Add balancing robot video!<br>
+                                (robot balancing or following objects)
+                            </div>
                         </div>
-                        <div class="project-tech">
-                            <span class="tech-tag">ROS</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Motion Planning</span>
-                            <span class="tech-tag">Control Theory</span>
+                        <div class="project-content">
+                            <div class="project-title">Two-Wheeled Balancing Robot</div>
+                            <div class="project-course">Personal Project • 2024-2025</div>
+                            <div class="project-description">
+                                Built self-balancing robot with PD control, computer vision object following, and Kalman filter sensor fusion for robust state estimation and autonomous navigation.
+                            </div>
+                            <div class="project-links">
+                                <a href="https://youtube.com/your-video" class="project-link">📹 YouTube</a>
+                                <a href="https://instructables.com/your-project" class="project-link">📄 Instructables</a>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Arduino</span>
+                                <span class="tech-tag">MATLAB</span>
+                                <span class="tech-tag">Computer Vision</span>
+                                <span class="tech-tag">Kalman Filtering</span>
+                                <span class="tech-tag">PD Control</span>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- Red Flags - Cooptation Detection -->
                     <div class="project-card">
-                        <div class="project-title">Visual Servo Control</div>
-                        <div class="project-course">16-662 Robot Autonomy</div>
-                        <div class="project-description">
-                            Implemented Position-Based and Image-Based Visual Servoing in Docker-based drone simulation environments. Developed control algorithms for visual tracking and autonomous navigation.
+                        <div class="project-thumbnail">
+                            <div class="thumbnail-placeholder">
+                                🔍 Add extension screenshot or demo
+                            </div>
                         </div>
-                        <div class="project-tech">
-                            <span class="tech-tag">Computer Vision</span>
-                            <span class="tech-tag">Control Systems</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">Python</span>
+                        <div class="project-content">
+                            <div class="project-title">Red Flags - Cooptation Detection</div>
+                            <div class="project-course">Hackathon Project • 2025</div>
+                            <div class="project-description">
+                                Built Chrome extension detecting cooptation in real-time text using transformer-based NLP models. Integrated DeepSeek API with custom preprocessing pipeline for context-aware political language analysis.
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/mewtsroach/red-flags" class="project-link">💻 GitHub</a>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">DeepSeek API</span>
+                                <span class="tech-tag">NLP</span>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- F1TENTH - Moved to More Projects -->
                     <div class="project-card">
-                        <div class="project-title">Motion Planning Algorithms</div>
-                        <div class="project-course">16-782 Planning & Decision-Making</div>
-                        <div class="project-description">
-                            Implemented A*, RRT*, and CHOMP algorithms in MATLAB. Developed ensemble planning strategies achieving 100% success rates on test datasets through intelligent algorithm selection.
+                        <div class="project-thumbnail">
+                            <div class="thumbnail-placeholder">
+                                🏎️ Add F1TENTH car racing video
+                            </div>
                         </div>
-                        <div class="project-tech">
-                            <span class="tech-tag">MATLAB</span>
-                            <span class="tech-tag">Path Planning</span>
-                            <span class="tech-tag">Optimization</span>
-                            <span class="tech-tag">Algorithms</span>
+                        <div class="project-content">
+                            <div class="project-title">F1TENTH Autonomous Racing</div>
+                            <div class="project-course">16-782 Planning & Decision-Making • Ongoing</div>
+                            <div class="project-description">
+                                Developing autonomous racing algorithms including Automatic Emergency Braking with Time to Collision calculations and multi-beam safety thresholds for high-speed navigation.
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">ROS</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Motion Planning</span>
+                                <span class="tech-tag">Control Theory</span>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- Motion Planning Algorithms -->
                     <div class="project-card">
-                        <div class="project-title">Autonomous Dodecacopter</div>
-                        <div class="project-course">Tartan Air Rescue • NASA/Boeing GoAERO Challenge</div>
-                        <div class="project-description">
-                            Led software development for a 140-pound autonomous dodecacopter. Developed flight control, navigation, and mission planning systems for search and rescue operations.
+                        <div class="project-thumbnail">
+                            <div class="thumbnail-placeholder">
+                                📐 Add path planning visualization
+                            </div>
                         </div>
-                        <div class="project-tech">
-                            <span class="tech-tag">Embedded Systems</span>
-                            <span class="tech-tag">Flight Control</span>
-                            <span class="tech-tag">C++</span>
-                            <span class="tech-tag">Autonomy</span>
+                        <div class="project-content">
+                            <div class="project-title">Motion Planning Algorithms</div>
+                            <div class="project-course">16-782 Planning & Decision-Making</div>
+                            <div class="project-description">
+                                Implemented A*, RRT*, and CHOMP algorithms in MATLAB. Developed ensemble planning strategies achieving 100% success rates through intelligent algorithm selection.
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">MATLAB</span>
+                                <span class="tech-tag">Path Planning</span>
+                                <span class="tech-tag">Optimization</span>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- Deep RL for Pong -->
                     <div class="project-card">
-                        <div class="project-title">Deep Reinforcement Learning</div>
-                        <div class="project-course">10-315 Machine Learning</div>
-                        <div class="project-description">
-                            Implemented Advantage Actor-Critic (A2C) algorithm for Atari Pong. Developed neural network architectures and training pipelines for deep RL applications.
+                        <div class="project-thumbnail">
+                            <div class="thumbnail-placeholder">
+                                🎮 Add Pong gameplay or training graph
+                            </div>
                         </div>
-                        <div class="project-tech">
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">Reinforcement Learning</span>
-                            <span class="tech-tag">Neural Networks</span>
-                            <span class="tech-tag">Python</span>
+                        <div class="project-content">
+                            <div class="project-title">Deep Reinforcement Learning</div>
+                            <div class="project-course">10-315 Machine Learning</div>
+                            <div class="project-description">
+                                Implemented Advantage Actor-Critic (A2C) algorithm for Atari Pong. Developed neural network architectures and training pipelines for deep RL applications.
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">Reinforcement Learning</span>
+                                <span class="tech-tag">Neural Networks</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="organizations">
+            <div class="container">
+                <h2>Organizations</h2>
+                <div class="orgs-grid">
+                    <div class="org-card">
+                        <div class="org-name">Tartan Air Rescue</div>
+                        <div class="org-role">Software Team Lead</div>
+                        <div class="org-description">
+                            Leading software development for autonomous dodecacopter competing in NASA/Boeing's GoAERO challenge. Developing flight control, navigation, and mission planning systems for human transport capability.
+                        </div>
+                    </div>
+
+                    <!-- Add your other organizations here -->
+                    <div class="org-card">
+                        <div class="org-name">[Organization Name]</div>
+                        <div class="org-role">[Your Role]</div>
+                        <div class="org-description">
+                            [Description of your involvement and contributions]
+                        </div>
+                    </div>
+
+                    <div class="org-card">
+                        <div class="org-name">[Organization Name]</div>
+                        <div class="org-role">[Your Role]</div>
+                        <div class="org-description">
+                            [Description of your involvement and contributions]
                         </div>
                     </div>
                 </div>
@@ -659,48 +1091,56 @@
 
         <section id="skills">
             <div class="container">
-                <h2>Skills</h2>
+                <h2>Technical Skills</h2>
                 <div class="skills-grid">
                     <div class="skill-category">
-                        <h3>Languages</h3>
+                        <h3>Programming</h3>
                         <div class="skill-list">
                             <span class="skill-item">Python</span>
-                            <span class="skill-item">C++</span>
+                            <span class="skill-item">C/C++</span>
                             <span class="skill-item">MATLAB</span>
                             <span class="skill-item">JavaScript</span>
+                            <span class="skill-item">Arduino</span>
+                            <span class="skill-item">Bash</span>
+                            <span class="skill-item">Java</span>
+                            <span class="skill-item">Rust</span>
                         </div>
                     </div>
 
                     <div class="skill-category">
-                        <h3>Robotics</h3>
+                        <h3>Robotics & ML</h3>
                         <div class="skill-list">
-                            <span class="skill-item">ROS</span>
-                            <span class="skill-item">Motion Planning</span>
-                            <span class="skill-item">Computer Vision</span>
-                            <span class="skill-item">Control Systems</span>
-                            <span class="skill-item">Kinematics</span>
+                            <span class="skill-item">ROS/ROS2</span>
+                            <span class="skill-item">OpenCV</span>
+                            <span class="skill-item">TensorFlow</span>
+                            <span class="skill-item">PyTorch</span>
+                            <span class="skill-item">MoveIt</span>
+                            <span class="skill-item">ArduPilot</span>
+                            <span class="skill-item">Isaac Sim</span>
                             <span class="skill-item">SLAM</span>
                         </div>
                     </div>
 
                     <div class="skill-category">
-                        <h3>Machine Learning</h3>
+                        <h3>Design & Fabrication</h3>
                         <div class="skill-list">
-                            <span class="skill-item">PyTorch</span>
-                            <span class="skill-item">Deep Learning</span>
-                            <span class="skill-item">Reinforcement Learning</span>
-                            <span class="skill-item">Computer Vision</span>
+                            <span class="skill-item">CAD (SolidWorks)</span>
+                            <span class="skill-item">OnShape</span>
+                            <span class="skill-item">Machining</span>
+                            <span class="skill-item">CNC</span>
+                            <span class="skill-item">3D Printing</span>
+                            <span class="skill-item">Soldering</span>
+                            <span class="skill-item">PCB Design</span>
                         </div>
                     </div>
 
                     <div class="skill-category">
-                        <h3>Tools & Design</h3>
+                        <h3>Tools & Systems</h3>
                         <div class="skill-list">
-                            <span class="skill-item">CAD (SolidWorks)</span>
+                            <span class="skill-item">Linux</span>
                             <span class="skill-item">Git</span>
                             <span class="skill-item">Docker</span>
-                            <span class="skill-item">Linux</span>
-                            <span class="skill-item">Machining</span>
+                            <span class="skill-item">Unity</span>
                         </div>
                     </div>
                 </div>
@@ -712,15 +1152,15 @@
                 <h2>Contact</h2>
                 <div class="contact-grid">
                     <div class="contact-info">
-                        <p><strong>Email:</strong> <a href="mailto:your.email@example.com" class="contact-link">your.email@example.com</a></p>
-                        <p><strong>GitHub:</strong> <a href="https://github.com/yourusername" class="contact-link">github.com/yourusername</a></p>
-                        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" class="contact-link">linkedin.com/in/yourprofile</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:ebehzadi@andrew.cmu.edu" class="contact-link">ebehzadi@andrew.cmu.edu</a></p>
+                        <p><strong>GitHub:</strong> <a href="https://github.com/mewtsroach" class="contact-link">github.com/mewtsroach</a></p>
+                        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/elena-behzadi" class="contact-link">linkedin.com/in/elena-behzadi</a></p>
                         <p><strong>Location:</strong> Pittsburgh, PA</p>
                     </div>
                     <div class="contact-cta">
                         <h3>Let's Build Something</h3>
-                        <p>I'm actively seeking summer 2026 robotics software engineering internships. Interested in perception, planning, control, and making robots work in the real world.</p>
-                        <a href="mailto:your.email@example.com" class="btn">Get in Touch</a>
+                        <p>I'm actively seeking summer 2026 robotics software and hardware engineering internships. Interested in perception, planning, control, mechanical design, and making robots work in the real world.</p>
+                        <a href="mailto:ebehzadi@andrew.cmu.edu" class="btn">Get in Touch</a>
                     </div>
                 </div>
             </div>
@@ -729,7 +1169,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Elena. Built with precision.</p>
+            <p>&copy; 2026 Elena Behzadi. Built with precision.</p>
         </div>
     </footer>
 </body>
